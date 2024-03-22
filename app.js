@@ -14,7 +14,7 @@ mongoose.connect(
 );
 
 const rfidSchema = new mongoose.Schema({
-  rfid: String,
+  name: String,
 });
 
 const RFID = mongoose.model("RFID", rfidSchema);
@@ -22,7 +22,7 @@ const RFID = mongoose.model("RFID", rfidSchema);
 app.post("/rfid", (req, res) => {
   const rfidData = req.body.rfid;
 
-  const newRFID = new RFID({ rfid: rfidData });
+  const newRFID = new RFID({ name: rfidData });
   newRFID
     .save()
     .then(() => {
